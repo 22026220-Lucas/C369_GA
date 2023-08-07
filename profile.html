@@ -16,7 +16,6 @@ Date/Time Last modified: 31/7/2023
   <link rel="stylesheet" href="styles.css">
 </head>
 <style>
-  /* Add CSS styles for the navigation bar */
   .header {
     overflow: hidden;
     background-color: #062773;
@@ -57,7 +56,6 @@ Date/Time Last modified: 31/7/2023
     margin: 0;
   }
 
-  /* Next & previous button */
   .prev, .next {
     cursor: pointer;
     position: absolute;
@@ -73,7 +71,6 @@ Date/Time Last modified: 31/7/2023
     user-select: none;
   }
 
-  /* On hover, add a black background color with a little bit see-through */
   .prev:hover, .next:hover {
     background-color: rgba(0, 0, 0, 0.8);
   }
@@ -233,12 +230,10 @@ Date/Time Last modified: 31/7/2023
   </footer>
 
   <script>
-    // Wait for the DOM to load before attaching the event listener
     document.addEventListener('DOMContentLoaded', function() {
       const currentDetails = document.getElementById('current-details');
       const editDetails = document.getElementById('edit-details');
-  
-      // Function to display the current details from local storage or default values
+
     function displayCurrentDetails() {
       const currentHouseNumber = document.getElementById('current-house-number');
       const currentContactNumber = document.getElementById('current-contact-number');
@@ -251,7 +246,6 @@ Date/Time Last modified: 31/7/2023
       const currentRace = document.getElementById('current-race');
       const currentOccupation = document.getElementById('current-occupation');
 
-      // Retrieve the details from local storage or set default values if not available
       const defaultHouseNumber = "6781 2345";
       const defaultContactNumber = "8123 4567";
       const defaultAddress = "Blk 367, Yishun Ave 4";
@@ -274,7 +268,6 @@ Date/Time Last modified: 31/7/2023
       const updatedRace = localStorage.getItem('updatedRace') || defaultRace;
       const updatedOccupation = localStorage.getItem('updatedOccupation') || defaultOccupation;
 
-      // Display the current details on the profile.html page
       currentHouseNumber.textContent = updatedHouseNumber;
       currentContactNumber.textContent = updatedContactNumber;
       currentAddress.textContent = updatedAddress;
@@ -286,19 +279,16 @@ Date/Time Last modified: 31/7/2023
       currentRace.textContent = updatedRace;
       currentOccupation.textContent = updatedOccupation;
     }
-      // Function to display the edit form and hide the current details
       function showEditForm() {
         currentDetails.style.display = 'none';
         editDetails.style.display = 'block';
       }
-  
-      // Function to display the current details and hide the edit form
+
       function showCurrentDetails() {
         currentDetails.style.display = 'block';
         editDetails.style.display = 'none';
       }
   
-      // Function to save the updated details to local storage
       function saveUpdatedDetails() {
         const houseNumberInput = document.getElementById('house-number');
         const contactNumberInput = document.getElementById('contact-number');
@@ -311,7 +301,6 @@ Date/Time Last modified: 31/7/2023
         const raceInput = document.getElementById('race');
         const occupationInput = document.getElementById('occupation');
   
-        // Get the new values from the form inputs
         const updatedHouseNumber = houseNumberInput.value;
         const updatedContactNumber = contactNumberInput.value;
         const updatedAddress = addressInput.value;
@@ -323,7 +312,6 @@ Date/Time Last modified: 31/7/2023
         const updatedRace = raceInput.value;
         const updatedOccupation = occupationInput.value;
   
-        // Save the updated details to local storage
         localStorage.setItem('updatedHouseNumber', updatedHouseNumber);
         localStorage.setItem('updatedContactNumber', updatedContactNumber);
         localStorage.setItem('updatedAddress', updatedAddress);
@@ -335,17 +323,13 @@ Date/Time Last modified: 31/7/2023
         localStorage.setItem('updatedRace', updatedRace);
         localStorage.setItem('updatedOccupation', updatedOccupation);
   
-        // Show the current details section and hide the edit details section
         showCurrentDetails();
-  
-        // Redirect the user back to the homepage after saving changes
+
         window.location.href = "index.html";
       }
-  
-      // Function to handle the cancel button click event
+
       function handleCancelButtonClick() {
         showCurrentDetails();
-        // Reset form fields to their current values
         const currentHouseNumber = localStorage.getItem('updatedHouseNumber') || "6781 2345";
         const currentContactNumber = localStorage.getItem('updatedContactNumber') || "8123 4567";
         const currentAddress = localStorage.getItem('updatedAddress') || "Blk 367, Yishun Ave 4";
@@ -369,22 +353,18 @@ Date/Time Last modified: 31/7/2023
         document.getElementById('occupation').value = currentOccupation;
       }
   
-      // Change Details button click event
       document.getElementById('change-btn').addEventListener('click', function() {
         showEditForm();
       });
-  
-      // Cancel button click event
+
       document.getElementById('cancel-btn').addEventListener('click', function() {
         handleCancelButtonClick();
       });
-  
-      // Save Changes button click event
+
       document.getElementById('save-btn').addEventListener('click', function() {
         saveUpdatedDetails();
       });
-  
-      // Call the function to display the current details when the profile.html page loads
+
       displayCurrentDetails();
     });
   </script>  

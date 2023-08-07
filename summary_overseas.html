@@ -14,7 +14,6 @@ Date/Time Last modified: 31/7/2023
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="styles.css">
   <style>
-    /* Add CSS styles for the navigation bar */
     .header {
       overflow: hidden;
       background-color: #062773;
@@ -73,7 +72,6 @@ Date/Time Last modified: 31/7/2023
       border-radius: 5px;
     }
 
-    /* Next & previous button */
     .prev, .next {
       cursor: pointer;
       position: absolute;
@@ -89,7 +87,6 @@ Date/Time Last modified: 31/7/2023
       user-select: none;
     }
 
-    /* Position the "next button" to the right */
     .next {
       background-color: #007bff;
       color: #fff;
@@ -99,7 +96,6 @@ Date/Time Last modified: 31/7/2023
       cursor: pointer;
     }
 
-    /* On hover, add a black background color with a little bit see-through */
     .prev:hover, .next:hover {
       background-color: rgba(0, 0, 0, 0.8);
     }
@@ -181,7 +177,6 @@ Date/Time Last modified: 31/7/2023
   <title>CapiBank - Overseas Transfer Summary</title>
 </head>
 <body>
-  <!-- Navigation Bar -->
   <div class="header">
     <a class="logo">CapiBank</a>
     <div class="header-right">
@@ -201,7 +196,6 @@ Date/Time Last modified: 31/7/2023
 
     <section class="summary-section">
       <h2>Overseas Transfer Summary</h2>
-      <!-- Display the user-entered details from overseas_transfer.html -->
       <p>Recipient's Name: <span id="recipient-name">-</span></p>
       <p>Recipient's Country: <span id="recipient-country">-</span></p>
       <p>Amount to Transfer (SGD): <span id="amount-sgd">-</span></p>
@@ -216,19 +210,16 @@ Date/Time Last modified: 31/7/2023
   </footer>
 
   <script>
-    // Retrieve the transfer details from sessionStorage
     const recipientName = sessionStorage.getItem('recipientName');
     const recipientCountry = sessionStorage.getItem('recipientCountry');
     const amountSGD = sessionStorage.getItem('amountSGD');
     const convertedAmount = sessionStorage.getItem('convertedAmount');
 
-    // Display the user-entered details on the summary page
     document.getElementById('recipient-name').textContent = recipientName;
     document.getElementById('recipient-country').textContent = recipientCountry;
     document.getElementById('amount-sgd').textContent = amountSGD;
     document.getElementById('converted-amount').textContent = convertedAmount;
 
-    // Function to redirect to homepage.html when the "Back to Homepage" button is clicked
     function redirectToHome() {
       window.location.href = 'index.html';
     }

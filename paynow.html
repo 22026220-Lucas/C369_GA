@@ -14,7 +14,6 @@ Date/Time Last modified: 31/7/2023
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="styles.css">
   <style>
-    /* Add CSS styles for the navigation bar */
     .header {
       overflow: hidden;
       background-color: #062773;
@@ -73,7 +72,6 @@ Date/Time Last modified: 31/7/2023
       border-radius: 5px;
     }
 
-    /* Next & previous button */
     .prev, .next {
       cursor: pointer;
       position: absolute;
@@ -89,7 +87,6 @@ Date/Time Last modified: 31/7/2023
       user-select: none;
     }
 
-    /* Position the "next button" to the right */
     .next {
       background-color: #007bff;
       color: #fff;
@@ -99,7 +96,6 @@ Date/Time Last modified: 31/7/2023
       cursor: pointer;
     }
 
-    /* On hover, add a black background color with a little bit see-through */
     .prev:hover, .next:hover {
       background-color: rgba(0, 0, 0, 0.8);
     }
@@ -181,7 +177,6 @@ Date/Time Last modified: 31/7/2023
   <title>CapiBank - PayNow</title>
 </head>
 <body>
-  <!-- Navigation Bar -->
   <div class="header">
     <a class="logo">CapiBank</a>
     <div class="header-right">
@@ -193,7 +188,6 @@ Date/Time Last modified: 31/7/2023
     </div>
   </div>
 
-  <!-- PayNow Content -->
   <div class="container">
     <h2>PayNow - Transfer Money</h2>
     <p>Recipient's phone number:</p>
@@ -220,12 +214,12 @@ Date/Time Last modified: 31/7/2023
         const firstDigit = recipientPhone.charAt(0);
         if (firstDigit !== '8' && firstDigit !== '9') {
           errorMessageElement.textContent = "Phone number must start with 8 or 9.";
-          amountErrorMessageElement.textContent = ""; // Clear amount error message if present
+          amountErrorMessageElement.textContent = ""; 
           return;
         }
       } else {
         errorMessageElement.textContent = "Please enter at least 8 numbers in the recipient's phone number.";
-        amountErrorMessageElement.textContent = ""; // Clear amount error message if present
+        amountErrorMessageElement.textContent = ""; 
         return;
       }
 
@@ -243,10 +237,9 @@ Date/Time Last modified: 31/7/2023
         return;
       }
 
-      errorMessageElement.textContent = ""; // Clear error messages if no issues
-      amountErrorMessageElement.textContent = ""; // Clear amount error message if no issues
+      errorMessageElement.textContent = ""; 
+      amountErrorMessageElement.textContent = ""; 
 
-      // Assuming confirmation_paynow.html is in the same directory as this file
       window.location.href = `confirmation_paynow.html?phone=${encodeURIComponent(recipientPhone)}&amount=${amount}`;
     }
   </script>

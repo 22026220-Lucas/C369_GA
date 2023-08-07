@@ -14,7 +14,6 @@ Date/Time Last modified: 31/7/2023
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="styles.css">
   <style>
-    /* Add CSS styles for the navigation bar */
     .header {
       overflow: hidden;
       background-color: #062773;
@@ -54,7 +53,6 @@ Date/Time Last modified: 31/7/2023
       vertical-align: center;
     }
 
-    /* Next & previous button */
     .prev, .next {
       cursor: pointer;
       position: absolute;
@@ -70,13 +68,11 @@ Date/Time Last modified: 31/7/2023
       user-select: none;
     }
 
-    /* Position the "next button" to the right */
     .next {
       right: 0;
       border-radius: 3px 0 0 3px;
     }
 
-    /* On hover, add a black background color with a little bit see-through */
     .prev:hover, .next:hover {
       background-color: rgba(0, 0, 0, 0.8);
     }
@@ -140,7 +136,7 @@ Date/Time Last modified: 31/7/2023
       justify-content: center;
       width: 150px;
       height: 150px;
-      border-radius: 10px; /* Rounded-squares */
+      border-radius: 10px; 
       background-color: #f0f0f0;
       margin: 10px;
       cursor: pointer;
@@ -150,7 +146,6 @@ Date/Time Last modified: 31/7/2023
       font-size: 36px;
     }
 
-    /* Styles for rounded container */
     .feature-container {
       display: flex;
       flex-wrap: wrap;
@@ -168,14 +163,14 @@ Date/Time Last modified: 31/7/2023
     }
 
     .feature-container .feature img {
-      width: 60px; /* Adjust image size to fit inside rounded-squares */
+      width: 60px; 
       height: 60px;
     }
 
     .feature-container .feature p {
       text-align: center;
       margin-top: 5px;
-      font-size: 14px; /* Adjust text size to fit inside rounded-squares */
+      font-size: 14px; 
     }
 
     .chatbot {
@@ -217,7 +212,7 @@ Date/Time Last modified: 31/7/2023
     }
 
     #chatbot {
-      margin-top: 20px; /* Adjust the spacing between the footer and the chatbot container */
+      margin-top: 20px;
     }
   </style>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Singapore">
@@ -271,14 +266,14 @@ Date/Time Last modified: 31/7/2023
             <p>Understanding About Money Laundering and Fraud</p>
           </a>
         </div>
-        <div class="chatbot" onclick="toggleChatbot()"> <!-- Add onclick event to chatbot div -->
+        <div class="chatbot" onclick="toggleChatbot()"> 
           <img src="chatbot.jpeg" alt="Chatbot">
         </div>
       </div>
-      <div id="chatbot" style="display: none;"> <!-- Hide the chatbot initially -->
+      <div id="chatbot" style="display: none;">
         <input type="text" id="userInput" placeholder="Ask a question...">
         <button onclick="sendQuestion()">Send</button>
-        <div id="chatbotOutput"></div> <!-- Add a container for chatbot output -->
+        <div id="chatbotOutput"></div> 
       </div>
       </div>
     </section>
@@ -305,25 +300,21 @@ Date/Time Last modified: 31/7/2023
       const userInput = document.getElementById("userInput").value;
       const chatbotOutput = document.getElementById("chatbotOutput");
 
-      // Display chatbot's response
       const responseElement = document.createElement("p");
       responseElement.textContent = "User: " + userInput;
       chatbotOutput.appendChild(responseElement);
 
       const chatbotElement = document.createElement("p");
       chatbotElement.textContent = "Chatbot: Thank you for your question. We will get back to you as soon as possible!";
-      chatbotElement.style.color = "red"; // Set the message color to red
+      chatbotElement.style.color = "red"; 
       chatbotOutput.appendChild(chatbotElement);
 
-       // Append the chatbot message between the footer and the container for asking questions
       const chatbotContainer = document.getElementById("chatbot");
       chatbotContainer.appendChild(chatbotElement);
 
-      // Hide the chatbot input and send button after sending the question
-      document.getElementById("userInput").value = ""; // Clear user input
+      document.getElementById("userInput").value = ""; 
       isChatbotOpen = false;
 
-      // Store the updated details in local storage
       localStorage.setItem('updatedHouseNumber', document.getElementById('house-number').value);
       localStorage.setItem('updatedContactNumber', document.getElementById('contact-number').value);
       localStorage.setItem('updatedAddress', document.getElementById('address').value);
@@ -335,7 +326,6 @@ Date/Time Last modified: 31/7/2023
       localStorage.setItem('updatedRace', document.getElementById('race').value);
       localStorage.setItem('updatedOccupation', document.getElementById('occupation').value);
 
-      // Redirect the user back to the homepage after saving changes
       window.location.href = "index.html";
     }
   </script>

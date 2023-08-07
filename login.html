@@ -17,8 +17,6 @@ Date/Time Last modified: 31/7/2023
   <title>Login</title>
 
   <style>
-    /* Add custom styles for login page */
-
     body {
       background-color: #f1f1f1;
       font-family: Arial, sans-serif;
@@ -111,8 +109,6 @@ Date/Time Last modified: 31/7/2023
       </div>
     </form>
   </div>
-
-  <!-- Rest of the JavaScript code -->
   <script>
     const loginForm = document.getElementById('login-form');
     const submitButton = document.getElementById('submit-button');
@@ -127,21 +123,18 @@ Date/Time Last modified: 31/7/2023
       const userId = document.getElementById('user_id').value;
       const pinNumber = document.getElementById('pin_number').value;
 
-      // Check user ID
       const userIdRegex = /^[0-9a-zA-Z!@#$%^&*()_+={}[\]|\\:;"'<>,.?/~`-]{12,}$/;
       if (!userIdRegex.test(userId)) {
         errorUserId.textContent = "Invalid User ID. Please enter again.";
         return;
       }
 
-      // Check PIN number
       const pinNumberRegex = /^\d{6}$/;
       if (!pinNumberRegex.test(pinNumber)) {
         errorPinNumber.textContent = "Invalid PIN number. Please enter again.";
         return;
       }
 
-      // If all validations pass, redirect the user to homepage.html
       window.location.href = "index.html";
     });
   </script>

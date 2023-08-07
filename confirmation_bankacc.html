@@ -14,7 +14,6 @@ Date/Time Last modified: 31/7/2023
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="styles.css">
   <style>
-    /* Add CSS styles for the navigation bar */
     .header {
       overflow: hidden;
       background-color: #062773;
@@ -73,7 +72,6 @@ Date/Time Last modified: 31/7/2023
       border-radius: 5px;
     }
 
-    /* Position the "next button" to the right */
     .next {
       cursor: pointer;
       background-color: #007bff;
@@ -82,11 +80,10 @@ Date/Time Last modified: 31/7/2023
       border: none;
       border-radius: 5px;
       font-size: 18px;
-      margin: 20px auto 0; /* Add margin to center the button horizontally */
+      margin: 20px auto 0; 
       display: block;
     }
 
-    /* On hover, add a black background color with a little bit see-through */
     .prev:hover, .next:hover {
       background-color: rgba(0, 0, 0, 0.8);
     }
@@ -163,7 +160,6 @@ Date/Time Last modified: 31/7/2023
   <title>CapiBank - Confirmation</title>
 </head>
 <body>
-  <!-- Navigation Bar -->
   <div class="header">
     <a class="logo">CapiBank</a>
     <div class="header-right">
@@ -185,19 +181,15 @@ Date/Time Last modified: 31/7/2023
     <p>&copy; 2023 CapiBank. All rights reserved.</p>
   </footer>
   <script>
-    // Get the parameters from the URL
     const urlParams = new URLSearchParams(window.location.search);
     const recipientBankAccount = urlParams.get('bankAccount');
     const transferAmount = urlParams.get('amount');
 
-    // Convert the transferAmount to a number
     const transferAmountNumber = parseFloat(transferAmount);
 
-    // Display the information details based on what the user entered
     document.getElementById('recipientBankAccount').textContent = recipientBankAccount;
     document.getElementById('transferAmount').textContent = transferAmountNumber.toFixed(2);
 
-    // Redirect to summary_bankacc.html after pressing the "Next" button
     function redirectToSummary() {
       window.location.href = `summary_bankacc.html?bankAccount=${encodeURIComponent(recipientBankAccount)}&amount=${transferAmountNumber}`;
     }

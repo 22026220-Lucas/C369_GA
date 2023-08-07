@@ -14,7 +14,6 @@ Date/Time Last modified: 31/7/2023
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="styles.css">
   <style>
-    /* Add CSS styles for the navigation bar */
     .header {
       overflow: hidden;
       background-color: #062773;
@@ -82,14 +81,12 @@ Date/Time Last modified: 31/7/2023
       vertical-align: center;
     }
 
-    /* Slideshow container */
     .slideshow-container {
       max-width: 1000px;
       position: relative;
       margin: auto;
     }
 
-    /* Next & previous button */
     .prev, .next {
       cursor: pointer;
       position: absolute;
@@ -105,13 +102,11 @@ Date/Time Last modified: 31/7/2023
       user-select: none;
     }
 
-    /* Position the "next button" to the right */
     .next {
       right: 0;
       border-radius: 3px 0 0 3px;
     }
 
-    /* On hover, add a black background color with a little bit see-through */
     .prev:hover, .next:hover {
       background-color: rgba(0, 0, 0, 0.8);
     }
@@ -200,7 +195,6 @@ Date/Time Last modified: 31/7/2023
   </style>
 </head>
 <body>
-  <!-- Navigation Bar -->
   <div class="header">
     <a class="logo">CapiBank</a>
     <div class="header-right">
@@ -233,29 +227,22 @@ Date/Time Last modified: 31/7/2023
     </section>
     </main>
     <footer>
-      <!-- Add your footer content here -->
       <p>&copy; 2023 CapiBank. All rights reserved.</p>
     </footer>
   
     <script>
-      // Wait for the DOM to load before attaching the event listener
       document.addEventListener('DOMContentLoaded', function() {
-        // Save button click event
         document.getElementById('save-btn').addEventListener('click', function(event) {
-          event.preventDefault(); // Prevent the form from submitting (optional)
+          event.preventDefault(); 
   
-          // Show the pop-up message
           alert("Changes saved");
   
-          // Redirect the user back to the homepage
           window.location.href = "index.html";
         });
-  
-        // Log Out button click event
+
         document.getElementById('logout-btn').addEventListener('click', function(event) {
-          event.preventDefault(); // Prevent the form from submitting (optional)
+          event.preventDefault();
   
-          // Redirect the user back to the login page
           window.location.href = "login.html";
         });
       });

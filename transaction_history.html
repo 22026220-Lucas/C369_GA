@@ -14,7 +14,6 @@ Date/Time Last modified: 31/7/2023
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="styles.css">
   <style>
-    /* Add CSS styles for the navigation bar */
     .header {
       overflow: hidden;
       background-color: #062773;
@@ -73,7 +72,6 @@ Date/Time Last modified: 31/7/2023
       border-radius: 5px;
     }
 
-    /* Next & previous button */
     .prev, .next {
       cursor: pointer;
       position: absolute;
@@ -89,7 +87,6 @@ Date/Time Last modified: 31/7/2023
       user-select: none;
     }
 
-    /* Position the "next button" to the right */
     .next {
       background-color: #007bff;
       color: #fff;
@@ -99,7 +96,6 @@ Date/Time Last modified: 31/7/2023
       cursor: pointer;
     }
 
-    /* On hover, add a black background color with a little bit see-through */
     .prev:hover, .next:hover {
       background-color: rgba(0, 0, 0, 0.8);
     }
@@ -177,7 +173,6 @@ Date/Time Last modified: 31/7/2023
       font-size: 14px;
     }
 
-    /* Styles for the transaction history table */
     h1 {
       text-align: center;
     }
@@ -201,7 +196,6 @@ Date/Time Last modified: 31/7/2023
       background-color: #f2f2f2;
     }
 
-    /* Divide the container into three sections: Date, Transaction type, and Amount */
     tbody td:nth-child(1) {
       width: 30%;
     }
@@ -218,7 +212,6 @@ Date/Time Last modified: 31/7/2023
   <title>CapiBank - PayNow</title>
 </head>
 <body>
-  <!-- Navigation Bar -->
   <div class="header">
     <a class="logo">CapiBank</a>
     <div class="header-right">
@@ -242,13 +235,11 @@ Date/Time Last modified: 31/7/2023
           </tr>
         </thead>
         <tbody>
-          <!-- Transaction details will be dynamically added here -->
         </tbody>
       </table>
     </div>
 
     <script>
-      // Sample transaction data
       const transactions = [
         { date: "2023-07-01", transactionType: "PayNow", amount: 100 },
         { date: "2023-07-02", transactionType: "Transfer Bank Acc", amount: 200 },
@@ -271,12 +262,8 @@ Date/Time Last modified: 31/7/2023
             </tr>
           `;
         });
-
-        // Update the table with the transactions
         transactionTable.innerHTML = transactionsHTML;
       }
-
-      // Call the function to display transactions on page load
       displayTransactions(transactions);
     </script>
   </body>

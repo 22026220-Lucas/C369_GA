@@ -15,7 +15,6 @@ Date/Time Last modified: 31/7/2023
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Create Account</title>
   <style>
-    /* Custom CSS styles */
 
     body {
       display: flex;
@@ -72,7 +71,7 @@ Date/Time Last modified: 31/7/2023
       color: red;
       font-size: 12px;
       display: block;
-      margin-top: 4px; /* Add some top margin to create space between the error messages */
+      margin-top: 4px; 
     }
   </style>
 </head>
@@ -135,7 +134,6 @@ Date/Time Last modified: 31/7/2023
 
       const errors = [];
 
-      // Check age
       const currentYear = new Date().getFullYear();
       const userYear = birthdate.getFullYear();
       const userAge = currentYear - userYear;
@@ -143,27 +141,22 @@ Date/Time Last modified: 31/7/2023
         errors.push({ message: "Age not suitable to sign up!", field: 'errorBirthdate' });
       }
 
-      // Check phone number
       if (phoneNumber.length !== 8 || !/^[89]/.test(phoneNumber)) {
         errors.push({ message: "Invalid phone number", field: 'errorPhoneNumber' });
       }
 
-      // Check email
       if (!email.endsWith("gmail.com")) {
         errors.push({ message: "Invalid email!", field: 'errorEmail' });
       }
 
-      // Check user ID
       if (/^\d+$/.test(userId)) {
         errors.push({ message: "Invalid user ID", field: 'errorUserId' });
       }
 
-      // Check PIN number
       if (pinNumber.length !== 6) {
         errors.push({ message: "Invalid PIN number", field: 'errorPinNumber' });
       }
 
-      // Display errors if any
       errors.forEach((error) => {
         const errorMessage = document.createElement('span');
         errorMessage.textContent = error.message;
@@ -172,7 +165,6 @@ Date/Time Last modified: 31/7/2023
       });
 
       if (errors.length === 0) {
-        // If all validations pass, redirect the user to the homepage.html
         window.location.href = "index.html";
       }
     });

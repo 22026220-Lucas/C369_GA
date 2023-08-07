@@ -74,14 +74,14 @@ Date/Time Last modified: 31/7/2023
     }
 
     #payment-options {
-      text-align: center; /* Center the payment options */
-      padding-left: 0; /* Remove default padding for the list */
+      text-align: center; 
+      padding-left: 0; 
     }
 
     #payment-options li {
-      list-style: none; /* Remove default list styles */
-      display: inline-block; /* Display buttons in a row */
-      margin-right: 20px; /* Add spacing between the buttons */
+      list-style: none; 
+      display: inline-block; 
+      margin-right: 20px; 
       text-align: center;
     }
 
@@ -103,7 +103,6 @@ Date/Time Last modified: 31/7/2023
       object-fit: cover;
     }
 
-    /* Next & previous button */
     .prev, .next {
       cursor: pointer;
       position: absolute;
@@ -119,7 +118,6 @@ Date/Time Last modified: 31/7/2023
       user-select: none;
     }
 
-    /* On hover, add a black background color with a little bit see-through */
     .prev:hover, .next:hover {
       background-color: rgba(0, 0, 0, 0.8);
     }
@@ -238,17 +236,14 @@ Date/Time Last modified: 31/7/2023
     <p>&copy; 2023 CapiBank. All rights reserved.</p>
   </footer>
   <script>
-    // Wait for the DOM to load before attaching the event listener
     document.addEventListener('DOMContentLoaded', function() {
       const paynowButton = document.getElementById('paynow-button');
       const bankaccButton = document.getElementById('bankacc-button');
 
-      // Next button click event
-      const nextButton = document.getElementById('next-button'); // Define the nextButton variable here
+      const nextButton = document.getElementById('next-button'); 
 
       if (nextButton) {
         nextButton.addEventListener('click', function() {
-          // Check the selected payment method
           const paymentOptions = document.getElementsByName('payment-method');
           let selectedOption = '';
           for (const option of paymentOptions) {
@@ -258,7 +253,6 @@ Date/Time Last modified: 31/7/2023
             }
           }
 
-          // Redirect the user to the respective page based on the selected payment method
           if (selectedOption === 'pay-now') {
             window.location.href = 'paynow.html';
           } else if (selectedOption === 'bank-acc') {
@@ -267,18 +261,14 @@ Date/Time Last modified: 31/7/2023
         });
       }
 
-      // New code for PayNow button click event
       if (paynowButton) {
         paynowButton.addEventListener('click', function() {
-          // Add your logic for the PayNow button here
           console.log('PayNow button clicked!');
         });
       }
 
-      // New code for Bank Account button click event
       if (bankaccButton) {
         bankaccButton.addEventListener('click', function() {
-          // Add your logic for the Bank Account button here
           console.log('Bank Account button clicked!');
         });
       }

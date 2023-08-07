@@ -15,7 +15,6 @@ Date/Time Last modified: 31/7/2023
   <title>CapiBank - Overseas Transfer</title>
   <link rel="stylesheet" href="styles.css">
   <style>
-    /* Add CSS styles for the navigation bar */
     .header {
       overflow: hidden;
       background-color: #062773;
@@ -74,7 +73,6 @@ Date/Time Last modified: 31/7/2023
       border-radius: 5px;
     }
 
-    /* Next & previous button */
     .prev, .next {
       cursor: pointer;
       position: absolute;
@@ -90,7 +88,6 @@ Date/Time Last modified: 31/7/2023
       user-select: none;
     }
 
-    /* Position the "next button" to the right */
     .next {
       background-color: #007bff;
       color: #fff;
@@ -100,7 +97,6 @@ Date/Time Last modified: 31/7/2023
       cursor: pointer;
     }
 
-    /* On hover, add a black background color with a little bit see-through */
     .prev:hover, .next:hover {
       background-color: rgba(0, 0, 0, 0.8);
     }
@@ -192,7 +188,6 @@ Date/Time Last modified: 31/7/2023
   <title>CapiBank - Transferring Money</title>
 </head>
 <body>
-  <!-- Navigation Bar -->
   <div class="header">
     <a class="logo">CapiBank</a>
     <div class="header-right">
@@ -208,19 +203,14 @@ Date/Time Last modified: 31/7/2023
       <h1>Overseas Transfer</h1>
       <div class="container">
         <form>
-          <!-- Recipient's Name -->
           <div class="form-field">
             <label for="recipient-name">Recipient's Name:</label>
             <input type="text" id="recipient-name" required>
             <div class="error-message" id="recipient-name-error"></div>
           </div>
-  
-          <!-- Choose Country -->
           <div class="form-field">
             <label for="country">Choose the recipient's country:</label>
             <select id="country" required>
-              <!-- Option to select country -->
-              <!-- You can use a script to add all 195 countries dynamically -->
               <option value="" disabled selected>Choose a country</option>
               <option value="USD">United States of America</option>
               <option value="EUR">Europe</option>
@@ -228,28 +218,21 @@ Date/Time Last modified: 31/7/2023
               <option value="KRW">South Korea</option>
               <option value="JPY">Japan</option>
               </option>
-              <!-- Add more countries as needed -->
             </select>
-            <!-- Error message for country selection -->
             <div class="error-message" id="country-error"></div>
           </div>
   
-          <!-- Enter amount to transfer -->
           <div class="form-field">
             <label for="amount">Enter amount to transfer (SGD):</label>
             <input type="number" id="amount" step="0.01" required>
             <div class="error-message" id="amount-error"></div>
           </div>
-  
-          <!-- Convert button -->
+
           <button type="button" onclick="calculateAmount();">Convert</button>
-  
-          <!-- Display how much recipient will get -->
           <div class="form-field">
             <label>Recipient will receive:</label>
             <p id="recipient-amount">0.00</p>
           </div>
-          <!-- Next button -->
           <button type="button" onclick="validateAndProceed();">Next</button>
         </form>
       </div>
@@ -270,7 +253,6 @@ Date/Time Last modified: 31/7/2023
       const amountError = document.getElementById('amount-error');
 
 
-      // Check if recipient's name is empty
       if (recipientNameInput.value.trim() === '') {
         recipientNameError.textContent = 'Please enter the recipient\'s name';
         return;
@@ -278,7 +260,6 @@ Date/Time Last modified: 31/7/2023
         recipientNameError.textContent = '';
       }
 
-      // Check if country is selected
       if (countryInput.value === '') {
         countryError.textContent = 'Please choose a country';
         return;
@@ -286,32 +267,25 @@ Date/Time Last modified: 31/7/2023
         countryError.textContent = '';
       }
 
-      // Check if amount to transfer is empty
       if (amountInput.value.trim() === '') {
         amountError.textContent = 'Please enter how much you would like to transfer';
         return;
       } else {
         amountError.textContent = '';
       }
-
-      // Get the selected country and amount values
       const selectedCountry = countryInput.value;
       const amountToTransfer = parseFloat(amountInput.value);
 
-      // Placeholder conversion rates (for demonstration purposes only)
       const conversionRates = {
         'USD': 0.7482,
         'EUR': 0.6819,
         'MYR': 3.3808,
         'KRW': 964.18,
         'JPY': 107.25
-        // Add more currency conversion rates for other countries as needed
       };
 
-      // Calculate the recipient's amount based on the selected country
       const recipientAmount = amountToTransfer * conversionRates[selectedCountry];
 
-      // Display the recipient's amount
       if (recipientAmountOutput) {
         recipientAmountOutput.textContent = recipientAmount.toFixed(2) + ' ' + selectedCountry;
       }
@@ -331,7 +305,6 @@ Date/Time Last modified: 31/7/2023
       const countryError = document.getElementById('country-error');
       const amountError = document.getElementById('amount-error');
 
-      // Check if recipient's name is empty
       if (recipientNameInput.value.trim() === '') {
         recipientNameError.textContent = 'Please enter the recipient\'s name';
         return;
@@ -339,16 +312,13 @@ Date/Time Last modified: 31/7/2023
         recipientNameError.textContent = '';
       }
 
-       // Get the amount to transfer value
        const amountToTransfer = parseFloat(amountInput.value);
 
-       // Check if amount exceeds the transaction limit of $2000
       if (amountToTransfer > 2000) {
         amountError.textContent = 'Transaction limit is $2000. Please enter an amount lesser than or equal to $2000.';
         return;
       }
 
-      // Check if country is selected
       if (countryInput.value === '') {
         countryError.textContent = 'Please choose a country';
         return;
@@ -356,7 +326,6 @@ Date/Time Last modified: 31/7/2023
         countryError.textContent = '';
       }
 
-      // Check if amount to transfer is empty
       if (amountInput.value.trim() === '') {
         amountError.textContent = 'Please enter how much you would like to transfer';
         return;
@@ -364,7 +333,6 @@ Date/Time Last modified: 31/7/2023
         amountError.textContent = '';
       }
 
-      // If all fields are filled, proceed to the next page
       window.location.href = 'confirmation_overseas.html';
     }
   </script>
