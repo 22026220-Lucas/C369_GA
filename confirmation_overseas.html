@@ -1,0 +1,169 @@
+<!--I declare that this code was written by me. 
+I will not copy or allow others to copy my code. 
+I understand that copying code is considered as plagiarism.
+
+Student Name: Lucas Lim
+Student ID: 22026220
+Class: E63C
+Date/Time Last modified: 31/7/2023
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>CapiBank - Confirmation</title>
+  <style>
+    /* Add custom styles for confirmation page */
+    header {
+      background-color: #062773;
+      padding: 10px;
+      color: #fff;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+    }
+
+    nav ul li {
+      margin-right: 20px;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    /* Add CSS styles for the logo */
+    .logo {
+      font-family: 'Singapore', Arial, sans-serif;
+      font-size: 20px;
+      font-weight: lighter;
+      color: #fff;
+      margin: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #13efc3;
+      line-height: 1.5;
+      margin: 0;
+      padding: 0;
+    }
+
+    main {
+      padding: 20px;
+    }
+
+    h1, h2, h3 {
+      color: #062773;
+    }
+
+    p {
+      margin: 0;
+    }
+
+    .confirmation-section {
+      background-color: #fff;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 4px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .confirmation-section h2 {
+      margin-bottom: 10px;
+    }
+
+    .confirmation-section p {
+      margin-bottom: 5px;
+    }
+
+    #next-button {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      background-color: #003663;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    #next-button:hover {
+      background-color: #002b4d;
+    }
+
+    footer {
+      background-color: #062773;
+      padding: 10px;
+      color: #fff;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <!-- Add your logo and navigation bar here -->
+      <h1 class="logo">CapiBank</h1>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="settings.html">Settings</a></li>
+        <li><a href="profile.html">Profile</a></li>
+        <li><a href="aboutus.html">About Us</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="confirmation-section">
+      <h1>Overseas Transfer Confirmation</h1>
+      <!-- Display the overseas transfer details, including country selection, amount in SGD, converted amount, and recipient's name -->
+      <div id="transfer-details">
+        <h2>Transfer Details</h2>
+        <p>Recipient's Name: <span id="recipient-name">-</span></p>
+        <p>Recipient's Country: <span id="country-input">-</span></p>
+        <p>Amount to Transfer (SGD): <span id="amount-sgd">-</span></p>
+        <p>Converted Amount: <span id="converted-amount">-</span></p>
+      </div>
+
+      <button id="next-button" onclick="redirectToSummary()">Confirm</button>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2023 CapiBank. All rights reserved.</p>
+    <!-- Add footer content here -->
+  </footer>
+
+  <script>
+    // JavaScript code for confirmation page
+
+    // Retrieve the transfer details from the sessionStorage
+    const recipientName = sessionStorage.getItem('recipientName');
+    const countryInput = sessionStorage.getItem('countryInput');
+    const amountSGD = sessionStorage.getItem('amountSGD');
+    const convertedAmount = sessionStorage.getItem('convertedAmount');
+
+    // Display the information details based on what the user entered
+    document.getElementById('recipient-name').textContent = recipientName;
+    document.getElementById('country-input').textContent = countryInput;
+    document.getElementById('amount-sgd').textContent = amountSGD;
+    document.getElementById('converted-amount').textContent = convertedAmount;
+
+    // Redirect to summary_overseas.html after pressing the "Next" button
+    function redirectToSummary() {
+      window.location.href = `summary_overseas.html?recipientName=${encodeURIComponent(recipientName)}&countryInput=${encodeURIComponent(countryInput)}&amountSGD=${encodeURIComponent(amountSGD)}&convertedAmount=${encodeURIComponent(convertedAmount)}`;
+    }
+  </script>
+</body>
+</html>

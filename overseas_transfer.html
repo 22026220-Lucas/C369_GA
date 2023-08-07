@@ -1,0 +1,372 @@
+<!--I declare that this code was written by me. 
+I will not copy or allow others to copy my code. 
+I understand that copying code is considered as plagiarism.
+
+Student Name: Lucas Lim
+Student ID: 22026220
+Class: E63C
+Date/Time Last modified: 31/7/2023
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CapiBank - Overseas Transfer</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Add CSS styles for the navigation bar */
+    .header {
+      overflow: hidden;
+      background-color: #062773;
+      padding: 20px 10px;
+    }
+
+    .header a {
+      float: left;
+      color: white;
+      text-align: center;
+      padding: 12px;
+      text-decoration: none;
+      font-size: 18px;
+      line-height: 25px;
+      border-radius: 4px;
+    }
+
+    .header a:hover {
+      background-color: #ddd;
+      color: black;
+    }
+
+    .header a.active {
+      background-color: #062773;
+      color: white;
+    }
+
+    .header-right {
+      float: right;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #0a931f;
+      text-align: center;
+    }
+
+    .container {
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    /* Next & previous button */
+    .prev, .next {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      width: auto;
+      padding: 16px;
+      margin-top: -22px;
+      color: white;
+      font-weight: bold;
+      font-size: 18px;
+      transition: 0.6s ease;
+      border-radius: 0 3px 3px 0;
+      user-select: none;
+    }
+
+    /* Position the "next button" to the right */
+    .next {
+      background-color: #007bff;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    /* On hover, add a black background color with a little bit see-through */
+    .prev:hover, .next:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    .numbertext {
+      color: #f2f2f2;
+      font-size: 12px;
+      padding: 8px 12px;
+      position: absolute;
+      top: 0;
+    }
+
+    .dot {
+      height: 10px;
+      width: 10px;
+      margin: 2px;
+      background-color: #bbb;
+      border-radius: 50%;
+      display: inline-block;
+      transition: background-color 0.6s ease;
+    }
+
+    .active, .dot:hover {
+      background-color: black;
+    }
+
+    .text {
+      position: absolute;
+      font-family: 'Helvetica', sans-serif;
+      color: white;
+      top: 65px;
+      left: 260px;
+    }
+
+    .paratext {
+      position: absolute;
+      font-family: 'Helvetica', sans-serif;
+      color: #ffffff;
+      border-radius: 0%;
+      width: 1000px;
+      background-color: rgba(45, 74, 105, 0.5);
+      top: 365px;
+      left: -260px;
+      font-size: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 40px;
+    }
+
+    body {
+      background-color: #13efc3;
+    }
+
+    .feature {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      background-color: #f0f0f0;
+      margin: 10px;
+      cursor: pointer;
+    }
+
+    .feature i {
+      font-size: 36px;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .form-field {
+      margin: 10px 0;
+    }
+
+    .error-message {
+      color: red;
+      font-size: 14px;
+    }
+  </style>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Singapore">
+  <title>CapiBank - Transferring Money</title>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <div class="header">
+    <a class="logo">CapiBank</a>
+    <div class="header-right">
+      <a class="active" href="index.html">Home</a>
+      <a class="active" href="settings.html">Settings</a>
+      <a class="active" href="profile.html">Profile</a>
+      <a class="active" href="aboutus.html">About Us</a>
+      <a class="active" href="contact.html">Contact</a>
+    </div>
+  </div>
+  <main>
+    <section id="overseas-transfer-section">
+      <h1>Overseas Transfer</h1>
+      <div class="container">
+        <form>
+          <!-- Recipient's Name -->
+          <div class="form-field">
+            <label for="recipient-name">Recipient's Name:</label>
+            <input type="text" id="recipient-name" required>
+            <div class="error-message" id="recipient-name-error"></div>
+          </div>
+  
+          <!-- Choose Country -->
+          <div class="form-field">
+            <label for="country">Choose the recipient's country:</label>
+            <select id="country" required>
+              <!-- Option to select country -->
+              <!-- You can use a script to add all 195 countries dynamically -->
+              <option value="" disabled selected>Choose a country</option>
+              <option value="USD">United States of America</option>
+              <option value="EUR">Europe</option>
+              <option value="MYR">Malaysia</option>
+              <option value="KRW">South Korea</option>
+              <option value="JPY">Japan</option>
+              </option>
+              <!-- Add more countries as needed -->
+            </select>
+            <!-- Error message for country selection -->
+            <div class="error-message" id="country-error"></div>
+          </div>
+  
+          <!-- Enter amount to transfer -->
+          <div class="form-field">
+            <label for="amount">Enter amount to transfer (SGD):</label>
+            <input type="number" id="amount" step="0.01" required>
+            <div class="error-message" id="amount-error"></div>
+          </div>
+  
+          <!-- Convert button -->
+          <button type="button" onclick="calculateAmount();">Convert</button>
+  
+          <!-- Display how much recipient will get -->
+          <div class="form-field">
+            <label>Recipient will receive:</label>
+            <p id="recipient-amount">0.00</p>
+          </div>
+          <!-- Next button -->
+          <button type="button" onclick="validateAndProceed();">Next</button>
+        </form>
+      </div>
+    </section>
+  </main>
+  <footer style="text-align: left;">
+    <p>&copy; 2023 CapiBank. All rights reserved.</p>
+  </footer>
+  <script>
+    function calculateAmount() {
+      const recipientNameInput = document.getElementById('recipient-name');
+      const countryInput = document.getElementById('country');
+      const amountInput = document.getElementById('amount');
+
+      const recipientAmountOutput = document.getElementById('recipient-amount');
+      const recipientNameError = document.getElementById('recipient-name-error');
+      const countryError = document.getElementById('country-error');
+      const amountError = document.getElementById('amount-error');
+
+
+      // Check if recipient's name is empty
+      if (recipientNameInput.value.trim() === '') {
+        recipientNameError.textContent = 'Please enter the recipient\'s name';
+        return;
+      } else {
+        recipientNameError.textContent = '';
+      }
+
+      // Check if country is selected
+      if (countryInput.value === '') {
+        countryError.textContent = 'Please choose a country';
+        return;
+      } else {
+        countryError.textContent = '';
+      }
+
+      // Check if amount to transfer is empty
+      if (amountInput.value.trim() === '') {
+        amountError.textContent = 'Please enter how much you would like to transfer';
+        return;
+      } else {
+        amountError.textContent = '';
+      }
+
+      // Get the selected country and amount values
+      const selectedCountry = countryInput.value;
+      const amountToTransfer = parseFloat(amountInput.value);
+
+      // Placeholder conversion rates (for demonstration purposes only)
+      const conversionRates = {
+        'USD': 0.7482,
+        'EUR': 0.6819,
+        'MYR': 3.3808,
+        'KRW': 964.18,
+        'JPY': 107.25
+        // Add more currency conversion rates for other countries as needed
+      };
+
+      // Calculate the recipient's amount based on the selected country
+      const recipientAmount = amountToTransfer * conversionRates[selectedCountry];
+
+      // Display the recipient's amount
+      if (recipientAmountOutput) {
+        recipientAmountOutput.textContent = recipientAmount.toFixed(2) + ' ' + selectedCountry;
+      }
+
+      sessionStorage.setItem('recipientName', recipientNameInput.value);
+      sessionStorage.setItem('recipientCountry', selectedCountry);
+      sessionStorage.setItem('amountSGD', amountToTransfer.toFixed(2));
+      sessionStorage.setItem('convertedAmount', recipientAmount.toFixed(2) + ' ' + selectedCountry);
+    }
+
+    function validateAndProceed() {
+      const recipientNameInput = document.getElementById('recipient-name');
+      const countryInput = document.getElementById('country');
+      const amountInput = document.getElementById('amount');
+
+      const recipientNameError = document.getElementById('recipient-name-error');
+      const countryError = document.getElementById('country-error');
+      const amountError = document.getElementById('amount-error');
+
+      // Check if recipient's name is empty
+      if (recipientNameInput.value.trim() === '') {
+        recipientNameError.textContent = 'Please enter the recipient\'s name';
+        return;
+      } else {
+        recipientNameError.textContent = '';
+      }
+
+       // Get the amount to transfer value
+       const amountToTransfer = parseFloat(amountInput.value);
+
+       // Check if amount exceeds the transaction limit of $2000
+      if (amountToTransfer > 2000) {
+        amountError.textContent = 'Transaction limit is $2000. Please enter an amount lesser than or equal to $2000.';
+        return;
+      }
+
+      // Check if country is selected
+      if (countryInput.value === '') {
+        countryError.textContent = 'Please choose a country';
+        return;
+      } else {
+        countryError.textContent = '';
+      }
+
+      // Check if amount to transfer is empty
+      if (amountInput.value.trim() === '') {
+        amountError.textContent = 'Please enter how much you would like to transfer';
+        return;
+      } else {
+        amountError.textContent = '';
+      }
+
+      // If all fields are filled, proceed to the next page
+      window.location.href = 'confirmation_overseas.html';
+    }
+  </script>
+  </body>
+  </html>

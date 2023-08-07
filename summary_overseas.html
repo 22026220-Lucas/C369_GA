@@ -1,0 +1,237 @@
+<!--I declare that this code was written by me. 
+I will not copy or allow others to copy my code. 
+I understand that copying code is considered as plagiarism.
+
+Student Name: Lucas Lim
+Student ID: 22026220
+Class: E63C
+Date/Time Last modified: 31/7/2023
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Add CSS styles for the navigation bar */
+    .header {
+      overflow: hidden;
+      background-color: #062773;
+      padding: 20px 10px;
+    }
+
+    .header a {
+      float: left;
+      color: white;
+      text-align: center;
+      padding: 12px;
+      text-decoration: none;
+      font-size: 18px;
+      line-height: 25px;
+      border-radius: 4px;
+    }
+
+    .header a:hover {
+      background-color: #ddd;
+      color: black;
+    }
+
+    .header a.active {
+      background-color: #062773;
+      color: white;
+    }
+
+    .header-right {
+      float: right;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #0a931f;
+      text-align: center;
+    }
+
+    .container {
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    /* Next & previous button */
+    .prev, .next {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      width: auto;
+      padding: 16px;
+      margin-top: -22px;
+      color: white;
+      font-weight: bold;
+      font-size: 18px;
+      transition: 0.6s ease;
+      border-radius: 0 3px 3px 0;
+      user-select: none;
+    }
+
+    /* Position the "next button" to the right */
+    .next {
+      background-color: #007bff;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    /* On hover, add a black background color with a little bit see-through */
+    .prev:hover, .next:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    .numbertext {
+      color: #f2f2f2;
+      font-size: 12px;
+      padding: 8px 12px;
+      position: absolute;
+      top: 0;
+    }
+
+    .dot {
+      height: 10px;
+      width: 10px;
+      margin: 2px;
+      background-color: #bbb;
+      border-radius: 50%;
+      display: inline-block;
+      transition: background-color 0.6s ease;
+    }
+
+    .active, .dot:hover {
+      background-color: black;
+    }
+
+    .text {
+      position: absolute;
+      font-family: 'Helvetica', sans-serif;
+      color: white;
+      top: 65px;
+      left: 260px;
+    }
+
+    .paratext {
+      position: absolute;
+      font-family: 'Helvetica', sans-serif;
+      color: #ffffff;
+      border-radius: 0%;
+      width: 1000px;
+      background-color: rgba(45, 74, 105, 0.5);
+      top: 365px;
+      left: -260px;
+      font-size: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 40px;
+    }
+
+    body {
+      background-color: #13efc3;
+    }
+
+    .feature {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      background-color: #f0f0f0;
+      margin: 10px;
+      cursor: pointer;
+    }
+
+    .feature i {
+      font-size: 36px;
+    }
+
+    .error-message {
+      color: red;
+      font-size: 14px;
+    }
+  </style>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Singapore">
+  <title>CapiBank - Overseas Transfer Summary</title>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <div class="header">
+    <a class="logo">CapiBank</a>
+    <div class="header-right">
+      <a class="active" href="index.html">Home</a>
+      <a class="active" href="settings.html">Settings</a>
+      <a class="active" href="profile.html">Profile</a>
+      <a class="active" href="aboutus.html">About Us</a>
+      <a class="active" href="contact.html">Contact</a>
+    </div>
+  </div>
+  <header>
+    <h1 class="header-title">CapiBank</h1>
+  </header>
+
+  <main>
+    <div class="transaction-successful">Transaction Successful</div>
+
+    <section class="summary-section">
+      <h2>Overseas Transfer Summary</h2>
+      <!-- Display the user-entered details from overseas_transfer.html -->
+      <p>Recipient's Name: <span id="recipient-name">-</span></p>
+      <p>Recipient's Country: <span id="recipient-country">-</span></p>
+      <p>Amount to Transfer (SGD): <span id="amount-sgd">-</span></p>
+      <p>Converted Amount: <span id="converted-amount">-</span></p>
+    </section>
+
+    <button class="back-home-button" onclick="redirectToHome()">Back to Homepage</button>
+  </main>
+
+  <footer>
+    <p>&copy; 2023 CapiBank. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Retrieve the transfer details from sessionStorage
+    const recipientName = sessionStorage.getItem('recipientName');
+    const recipientCountry = sessionStorage.getItem('recipientCountry');
+    const amountSGD = sessionStorage.getItem('amountSGD');
+    const convertedAmount = sessionStorage.getItem('convertedAmount');
+
+    // Display the user-entered details on the summary page
+    document.getElementById('recipient-name').textContent = recipientName;
+    document.getElementById('recipient-country').textContent = recipientCountry;
+    document.getElementById('amount-sgd').textContent = amountSGD;
+    document.getElementById('converted-amount').textContent = convertedAmount;
+
+    // Function to redirect to homepage.html when the "Back to Homepage" button is clicked
+    function redirectToHome() {
+      window.location.href = 'homepage.html';
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,283 @@
+<!--I declare that this code was written by me. 
+I will not copy or allow others to copy my code. 
+I understand that copying code is considered as plagiarism.
+
+Student Name: Lucas Lim
+Student ID: 22026220
+Class: E63C
+Date/Time Last modified: 31/7/2023
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Add CSS styles for the navigation bar */
+    .header {
+      overflow: hidden;
+      background-color: #062773;
+      padding: 20px 10px;
+    }
+
+    .header a {
+      float: left;
+      color: white;
+      text-align: center;
+      padding: 12px;
+      text-decoration: none;
+      font-size: 18px;
+      line-height: 25px;
+      border-radius: 4px;
+    }
+
+    .header a:hover {
+      background-color: #ddd;
+      color: black;
+    }
+
+    .header a.active {
+      background-color: #062773;
+      color: white;
+    }
+
+    .header-right {
+      float: right;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #0a931f;
+      text-align: center;
+    }
+
+    .container {
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    /* Next & previous button */
+    .prev, .next {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      width: auto;
+      padding: 16px;
+      margin-top: -22px;
+      color: white;
+      font-weight: bold;
+      font-size: 18px;
+      transition: 0.6s ease;
+      border-radius: 0 3px 3px 0;
+      user-select: none;
+    }
+
+    /* Position the "next button" to the right */
+    .next {
+      background-color: #007bff;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    /* On hover, add a black background color with a little bit see-through */
+    .prev:hover, .next:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    .numbertext {
+      color: #f2f2f2;
+      font-size: 12px;
+      padding: 8px 12px;
+      position: absolute;
+      top: 0;
+    }
+
+    .dot {
+      height: 10px;
+      width: 10px;
+      margin: 2px;
+      background-color: #bbb;
+      border-radius: 50%;
+      display: inline-block;
+      transition: background-color 0.6s ease;
+    }
+
+    .active, .dot:hover {
+      background-color: black;
+    }
+
+    .text {
+      position: absolute;
+      font-family: 'Helvetica', sans-serif;
+      color: white;
+      top: 65px;
+      left: 260px;
+    }
+
+    .paratext {
+      position: absolute;
+      font-family: 'Helvetica', sans-serif;
+      color: #ffffff;
+      border-radius: 0%;
+      width: 1000px;
+      background-color: rgba(45, 74, 105, 0.5);
+      top: 365px;
+      left: -260px;
+      font-size: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 40px;
+    }
+
+    body {
+      background-color: #13efc3;
+    }
+
+    .feature {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      background-color: #f0f0f0;
+      margin: 10px;
+      cursor: pointer;
+    }
+
+    .feature i {
+      font-size: 36px;
+    }
+
+    .error-message {
+      color: red;
+      font-size: 14px;
+    }
+
+    /* Styles for the transaction history table */
+    h1 {
+      text-align: center;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th, td {
+      padding: 10px;
+      border-bottom: 1px solid #ccc;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    tbody tr:hover {
+      background-color: #f2f2f2;
+    }
+
+    /* Divide the container into three sections: Date, Transaction type, and Amount */
+    tbody td:nth-child(1) {
+      width: 30%;
+    }
+
+    tbody td:nth-child(2) {
+      width: 40%;
+    }
+
+    tbody td:nth-child(3) {
+      width: 30%;
+    }
+  </style>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Singapore">
+  <title>CapiBank - PayNow</title>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <div class="header">
+    <a class="logo">CapiBank</a>
+    <div class="header-right">
+      <a class="active" href="index.html">Home</a>
+      <a class="active" href="settings.html">Settings</a>
+      <a class="active" href="profile.html">Profile</a>
+      <a class="active" href="aboutus.html">About Us</a>
+      <a class="active" href="contact.html">Contact</a>
+    </div>
+  </div>
+
+  <body>
+    <h1>Transaction History</h1>
+    <div class="container">
+      <table id="transactionTable">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Transaction Type</th>
+            <th>Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Transaction details will be dynamically added here -->
+        </tbody>
+      </table>
+    </div>
+
+    <script>
+      // Sample transaction data
+      const transactions = [
+        { date: "2023-07-01", transactionType: "PayNow", amount: 100 },
+        { date: "2023-07-02", transactionType: "Transfer Bank Acc", amount: 200 },
+        { date: "2023-07-03", transactionType: "Overseas Transfer", amount: 300 },
+        { date: "2023-07-05", transactionType: "Deposit", amount: 500 },
+        { date: "2023-07-06", transactionType: "Withdraw", amount: -100 },
+      ];
+
+      function displayTransactions(transactions) {
+        const transactionTable = document.getElementById('transactionTable').getElementsByTagName('tbody')[0];
+        let transactionsHTML = '';
+
+        transactions.forEach(transaction => {
+          const { date, transactionType, amount } = transaction;
+          transactionsHTML += `
+            <tr>
+              <td>${date}</td>
+              <td>${transactionType}</td>
+              <td>$${amount.toFixed(2)}</td>
+            </tr>
+          `;
+        });
+
+        // Update the table with the transactions
+        transactionTable.innerHTML = transactionsHTML;
+      }
+
+      // Call the function to display transactions on page load
+      displayTransactions(transactions);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,343 @@
+<!--I declare that this code was written by me. 
+I will not copy or allow others to copy my code. 
+I understand that copying code is considered as plagiarism.
+
+Student Name: Lucas Lim
+Student ID: 22026220
+Class: E63C
+Date/Time Last modified: 31/7/2023
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Add CSS styles for the navigation bar */
+    .header {
+      overflow: hidden;
+      background-color: #062773;
+      padding: 20px 10px;
+    }
+
+    .header a {
+      float: left;
+      color: white;
+      text-align: center;
+      padding: 12px;
+      text-decoration: none;
+      font-size: 18px;
+      line-height: 25px;
+      border-radius: 4px;
+    }
+
+    .header a.active {
+      background-color: #062773;
+      color: white;
+    }
+
+    .header-right {
+      float: right;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Verdana', sans-serif;
+      margin: 0;
+    }
+
+    img {
+      vertical-align: center;
+    }
+
+    /* Next & previous button */
+    .prev, .next {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      width: auto;
+      padding: 16px;
+      margin-top: -22px;
+      color: white;
+      font-weight: bold;
+      font-size: 18px;
+      transition: 0.6s ease;
+      border-radius: 0 3px 3px 0;
+      user-select: none;
+    }
+
+    /* Position the "next button" to the right */
+    .next {
+      right: 0;
+      border-radius: 3px 0 0 3px;
+    }
+
+    /* On hover, add a black background color with a little bit see-through */
+    .prev:hover, .next:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    .numbertext {
+      color: #f2f2f2;
+      font-size: 12px;
+      padding: 8px 12px;
+      position: absolute;
+      top: 0;
+    }
+
+    .dot {
+      height: 10px;
+      width: 10px;
+      margin: 2px;
+      background-color: #bbb;
+      border-radius: 50%;
+      display: inline-block;
+      transition: background-color 0.6s ease;
+    }
+
+    .active, .dot:hover {
+      background-color: black;
+    }
+
+
+    .text {
+      position: absolute;
+      font-family: 'Helvetica', sans-serif;
+      color: white;
+      top: 65px;
+      left: 260px;
+    }
+
+    .paratext {
+      position: absolute;
+      font-family: 'Helvetica', sans-serif;
+      color: #ffffff;
+      border-radius: 0%;
+      width: 1000px;
+      background-color: rgba(45, 74, 105, 0.5);
+      top: 365px;
+      left: -260px;
+      font-size: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 40px;
+    }
+
+    body {
+      background-color: #13efc3;
+    }
+
+    .feature {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 150px;
+      height: 150px;
+      border-radius: 10px; /* Rounded-squares */
+      background-color: #f0f0f0;
+      margin: 10px;
+      cursor: pointer;
+    }
+
+    .feature i {
+      font-size: 36px;
+    }
+
+    /* Styles for rounded container */
+    .feature-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .feature-container .feature {
+      margin: 10px;
+    }
+
+    .feature-container .feature a {
+      text-decoration: none;
+      color: #333;
+    }
+
+    .feature-container .feature img {
+      width: 60px; /* Adjust image size to fit inside rounded-squares */
+      height: 60px;
+    }
+
+    .feature-container .feature p {
+      text-align: center;
+      margin-top: 5px;
+      font-size: 14px; /* Adjust text size to fit inside rounded-squares */
+    }
+
+    .chatbot {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background-color: #f0f0f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .chatbot img {
+      width: 40px;
+      height: 40px;
+    }
+
+    .chatbot.open {
+      width: 300px;
+      height: 200px;
+      background-color: #ffffff;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+    }
+
+    .chatbot.open input {
+      margin-bottom: 10px;
+    }
+
+    #chatbotOutput p {
+      color: red;
+      font-size: 12px;
+    }
+
+    #chatbot {
+      margin-top: 20px; /* Adjust the spacing between the footer and the chatbot container */
+    }
+  </style>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Singapore">
+  <title>Homepage</title>
+</head>
+<body>
+  <header>
+    <div class="header">
+      <a class="logo">CapiBank</a>
+      <div class="header-right">
+        <a class="active" href="settings.html">Settings</a>
+        <a class="active" href="aboutus.html">About Us</a>
+        <a class="active" href="contact.html">Contact</a>
+      </div>
+    </div>
+  </header>
+  
+  <div id="content">
+    <section id="home">
+      <h2>Welcome, Mr Lim!</h2>
+      <p>Account Number: 271-0893-932</p>
+      <p>Account Balance: $10367.90</p>
+      <div class="feature-container">
+        <div class="feature">
+          <a href="profile.html">
+            <img src="C:\Users\65872\Desktop\C369_GA\profile.png" alt="Profile">
+            <p>Profile</p>
+          </a>
+        </div>
+        <div class="feature">
+          <a href="transfer.html">
+            <img src="C:\Users\65872\Desktop\C369_GA\transfer.png" alt="Transfer Money">
+            <p>Transfer Money</p>
+          </a>
+        </div>
+        <div class="feature">
+          <a href="transaction_history.html">
+            <img src="C:\Users\65872\Desktop\C369_GA\history.png" alt="Transaction History">
+            <p>Transaction History</p>
+          </a>
+        </div>
+        <div class="feature">
+          <a href="overseas_transfer.html">
+            <img src="C:\Users\65872\Desktop\C369_GA\overseas.jpeg" alt="Overseas Transfer">
+            <p>Overseas Transfer</p>
+          </a>
+        </div>
+        <div class="feature">
+          <a href="laundering_fraud.html">
+            <img src="C:\Users\65872\Desktop\C369_GA\launder.png" alt="Understanding About Money Laundering and Fraud">
+            <p>Understanding About Money Laundering and Fraud</p>
+          </a>
+        </div>
+        <div class="chatbot" onclick="toggleChatbot()"> <!-- Add onclick event to chatbot div -->
+          <img src="C:\Users\65872\Desktop\C369_GA\chatbot.jpeg" alt="Chatbot">
+        </div>
+      </div>
+      <div id="chatbot" style="display: none;"> <!-- Hide the chatbot initially -->
+        <input type="text" id="userInput" placeholder="Ask a question...">
+        <button onclick="sendQuestion()">Send</button>
+        <div id="chatbotOutput"></div> <!-- Add a container for chatbot output -->
+      </div>
+      </div>
+    </section>
+  </div>
+  
+  <footer>
+    <p>&copy; 2023 CapiBank. All rights reserved.</p>
+  </footer>
+  
+  <script>
+    let isChatbotOpen = false;
+
+    function toggleChatbot() {
+      const chatbot = document.getElementById("chatbot");
+      isChatbotOpen = !isChatbotOpen;
+      if (isChatbotOpen) {
+        chatbot.style.display = "block";
+      } else {
+        chatbot.style.display = "none";
+      }
+    }
+
+    function sendQuestion() {
+      const userInput = document.getElementById("userInput").value;
+      const chatbotOutput = document.getElementById("chatbotOutput");
+
+      // Display chatbot's response
+      const responseElement = document.createElement("p");
+      responseElement.textContent = "User: " + userInput;
+      chatbotOutput.appendChild(responseElement);
+
+      const chatbotElement = document.createElement("p");
+      chatbotElement.textContent = "Chatbot: Thank you for your question. We will get back to you as soon as possible!";
+      chatbotElement.style.color = "red"; // Set the message color to red
+      chatbotOutput.appendChild(chatbotElement);
+
+       // Append the chatbot message between the footer and the container for asking questions
+      const chatbotContainer = document.getElementById("chatbot");
+      chatbotContainer.appendChild(chatbotElement);
+
+      // Hide the chatbot input and send button after sending the question
+      document.getElementById("userInput").value = ""; // Clear user input
+      isChatbotOpen = false;
+
+      // Store the updated details in local storage
+      localStorage.setItem('updatedHouseNumber', document.getElementById('house-number').value);
+      localStorage.setItem('updatedContactNumber', document.getElementById('contact-number').value);
+      localStorage.setItem('updatedAddress', document.getElementById('address').value);
+      localStorage.setItem('updatedName', document.getElementById('name').value);
+      localStorage.setItem('updatedGender', document.getElementById('gender').options[document.getElementById('gender').selectedIndex].text);
+      localStorage.setItem('updatedEmail', document.getElementById('email').value);
+      localStorage.setItem('updatedNationality', document.getElementById('nationality').value);
+      localStorage.setItem('updatedDateOfBirth', document.getElementById('date-of-birth').value);
+      localStorage.setItem('updatedRace', document.getElementById('race').value);
+      localStorage.setItem('updatedOccupation', document.getElementById('occupation').value);
+
+      // Redirect the user back to the homepage after saving changes
+      window.location.href = "homepage.html";
+    }
+  </script>
+</body>
+</html>

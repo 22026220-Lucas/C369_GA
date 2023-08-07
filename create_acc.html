@@ -1,0 +1,181 @@
+<!--I declare that this code was written by me. 
+I will not copy or allow others to copy my code. 
+I understand that copying code is considered as plagiarism.
+
+Student Name: Lucas Lim
+Student ID: 22026220
+Class: E63C
+Date/Time Last modified: 31/7/2023
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Account</title>
+  <style>
+    /* Custom CSS styles */
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    #createAccountForm {
+      max-width: 400px;
+      background-color: #f1f1f1;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    #createAccountForm .form-group {
+      margin-bottom: 15px;
+      position: relative;
+    }
+
+    #createAccountForm label {
+      display: block;
+      font-weight: bold;
+    }
+
+    #createAccountForm input[type="text"],
+    #createAccountForm input[type="email"],
+    #createAccountForm input[type="password"],
+    #createAccountForm input[type="date"] {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    #createAccountForm button {
+      width: 100%;
+      padding: 10px;
+      background-color: #0ea720;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #createAccountForm button:hover {
+      background-color: #0c940c;
+    }
+
+    .error {
+      color: red;
+      font-size: 12px;
+      display: block;
+      margin-top: 4px; /* Add some top margin to create space between the error messages */
+    }
+  </style>
+</head>
+
+<body>
+  <form id="createAccountForm">
+    <div class="form-group">
+      <label for="firstName">First Name:</label>
+      <input type="text" id="firstName" required>
+      <span id="errorFirstName" class="error"></span>
+    </div>
+    <div class="form-group">
+      <label for="lastName">Last Name:</label>
+      <input type="text" id="lastName" required>
+      <span id="errorLastName" class="error"></span>
+    </div>
+    <div class="form-group">
+      <label for="phoneNumber">Phone Number:</label>
+      <input type="text" id="phoneNumber" required>
+      <span id="errorPhoneNumber" class="error"></span>
+    </div>
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" id="email" required>
+      <span id="errorEmail" class="error"></span>
+    </div>
+    <div class="form-group">
+      <label for="pinNumber">PIN Number:</label>
+      <input type="password" id="pinNumber" required>
+      <span id="errorPinNumber" class="error"></span>
+    </div>
+    <div class="form-group">
+      <label for="userId">User ID:</label>
+      <input type="text" id="userId" required>
+      <span id="errorUserId" class="error"></span>
+    </div>
+    <div class="form-group">
+      <label for="birthdate">Birthdate:</label>
+      <input type="date" id="birthdate" required>
+      <span id="errorBirthdate" class="error"></span>
+    </div>
+    <button type="submit">Create Account</button>
+  </form>
+
+  <script>
+    const createAccountForm = document.getElementById('createAccountForm');
+
+    createAccountForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const errorMessages = document.querySelectorAll('.error');
+      errorMessages.forEach((errorMessage) => (errorMessage.textContent = ''));
+
+      const firstName = document.getElementById('firstName').value;
+      const lastName = document.getElementById('lastName').value;
+      const phoneNumber = document.getElementById('phoneNumber').value;
+      const email = document.getElementById('email').value;
+      const pinNumber = document.getElementById('pinNumber').value;
+      const userId = document.getElementById('userId').value;
+      const birthdate = new Date(document.getElementById('birthdate').value);
+
+      const errors = [];
+
+      // Check age
+      const currentYear = new Date().getFullYear();
+      const userYear = birthdate.getFullYear();
+      const userAge = currentYear - userYear;
+      if (userAge < 18 || userAge > 100) {
+        errors.push({ message: "Age not suitable to sign up!", field: 'errorBirthdate' });
+      }
+
+      // Check phone number
+      if (phoneNumber.length !== 8 || !/^[89]/.test(phoneNumber)) {
+        errors.push({ message: "Invalid phone number", field: 'errorPhoneNumber' });
+      }
+
+      // Check email
+      if (!email.endsWith("gmail.com")) {
+        errors.push({ message: "Invalid email!", field: 'errorEmail' });
+      }
+
+      // Check user ID
+      if (/^\d+$/.test(userId)) {
+        errors.push({ message: "Invalid user ID", field: 'errorUserId' });
+      }
+
+      // Check PIN number
+      if (pinNumber.length !== 6) {
+        errors.push({ message: "Invalid PIN number", field: 'errorPinNumber' });
+      }
+
+      // Display errors if any
+      errors.forEach((error) => {
+        const errorMessage = document.createElement('span');
+        errorMessage.textContent = error.message;
+        errorMessage.classList.add('error');
+        document.getElementById(error.field).appendChild(errorMessage);
+      });
+
+      if (errors.length === 0) {
+        // If all validations pass, redirect the user to the homepage.html
+        window.location.href = "homepage.html";
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,392 @@
+<!--I declare that this code was written by me. 
+I will not copy or allow others to copy my code. 
+I understand that copying code is considered as plagiarism.
+
+Student Name: Lucas Lim
+Student ID: 22026220
+Class: E63C
+Date/Time Last modified: 31/7/2023
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Profile</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+  /* Add CSS styles for the navigation bar */
+  .header {
+    overflow: hidden;
+    background-color: #062773;
+    padding: 20px 10px;
+  }
+
+  .header a {
+    float: left;
+    color: white;
+    text-align: center;
+    padding: 12px;
+    text-decoration: none;
+    font-size: 18px;
+    line-height: 25px;
+    border-radius: 4px;
+  }
+
+  .header a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+
+  .header a.active {
+    background-color: #062773;
+    color: white;
+  }
+
+  .header-right {
+    float: right;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Verdana', sans-serif;
+    margin: 0;
+  }
+
+  /* Next & previous button */
+  .prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+  }
+
+  /* On hover, add a black background color with a little bit see-through */
+  .prev:hover, .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+
+  .numbertext {
+    color: #f2f2f2;
+    font-size: 12px;
+    padding: 8px 12px;
+    position: absolute;
+    top: 0;
+  }
+
+  .dot {
+    height: 10px;
+    width: 10px;
+    margin: 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+  }
+
+  .active, .dot:hover {
+    background-color: black;
+  }
+
+  .text {
+    position: absolute;
+    font-family: 'Helvetica', sans-serif;
+    color: white;
+    top: 65px;
+    left: 260px;
+  }
+
+  .paratext {
+    position: absolute;
+    font-family: 'Helvetica', sans-serif;
+    color: #ffffff;
+    border-radius: 0%;
+    width: 1000px;
+    background-color: rgba(45, 74, 105, 0.5);
+    top: 365px;
+    left: -260px;
+    font-size: 20px;
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 40px;
+  }
+
+  body {
+    background-color: #13efc3;
+
+  }
+
+  .feature {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-color: #f0f0f0;
+    margin: 10px;
+    cursor: pointer;
+  }
+
+  .feature i {
+    font-size: 36px;
+  }
+</style>
+<body>
+  <header>
+    <div class="header">
+      <a class="logo">CapiBank</a>
+      <div class="header-right">
+        <a class="active" href="index.html">Home</a>
+        <a class="active" href="settings.html">Settings</a>
+        <a class="active" href="aboutus.html">About Us</a>
+        <a class="active" href="contact.html">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="profile">
+      <h2>User Profile</h2>
+      <div id="current-details">
+        <h3>Contact Details</h3>
+        <p><strong>House Number:</strong> <span id="current-house-number">6781 2345</span></p>
+        <p><strong>Contact Number:</strong> <span id="current-contact-number">8123 4567</span></p>
+
+        <h3>Address Details</h3>
+        <p><strong>Address:</strong> <span id="current-address">Blk 367, Yishun Ave 4</span></p>
+
+        <h3>Personal Details</h3>
+        <p><strong>Name:</strong> <span id="current-name">Lucas Lim</span></p>
+        <p><strong>Gender:</strong> <span id="current-gender">Male</span></p>
+        <p><strong>Email:</strong> <span id="current-email">lucaslim@gmail.com</span></p>
+        <p><strong>Nationality:</strong> <span id="current-nationality">Singaporean</span></p>
+        <p><strong>Date of Birth:</strong> <span id="current-date-of-birth">2000-07-29</span></p>
+        <p><strong>Race:</strong> <span id="current-race">Chinese</span></p>
+        <p><strong>Occupation:</strong> <span id="current-occupation">Student</span></p>
+
+        <button id="change-btn">Change Details</button>
+      </div>
+
+      <div id="edit-details" style="display: none;">
+        <form>
+          <h3>Contact Details</h3>
+          <label for="house-number">House Number:</label>
+          <input type="text" id="house-number" name="house-number" required>
+
+          <label for="contact-number">Contact Number:</label>
+          <input type="tel" id="contact-number" name="contact-number" required>
+
+          <h3>Address Details</h3>
+          <label for="address">Address:</label>
+          <textarea id="address" name="address" required></textarea>
+
+          <h3>Personal Details</h3>
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" required>
+
+          <label for="gender">Gender:</label>
+          <select id="gender" name="gender" required>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select>
+
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required>
+
+          <label for="nationality">Nationality:</label>
+          <input type="text" id="nationality" name="nationality" required>
+
+          <label for="date-of-birth">Date of Birth:</label>
+          <input type="date" id="date-of-birth" name="date-of-birth" required>
+
+          <label for="race">Race:</label>
+          <input type="text" id="race" name="race" required>
+
+          <label for="occupation">Occupation:</label>
+          <input type="text" id="occupation" name="occupation" required>
+
+          <button type="button" id="save-btn">Save Changes</button>
+          <button type="button" id="cancel-btn">Cancel</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2023 CapiBank. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Wait for the DOM to load before attaching the event listener
+    document.addEventListener('DOMContentLoaded', function() {
+      const currentDetails = document.getElementById('current-details');
+      const editDetails = document.getElementById('edit-details');
+  
+      // Function to display the current details from local storage or default values
+    function displayCurrentDetails() {
+      const currentHouseNumber = document.getElementById('current-house-number');
+      const currentContactNumber = document.getElementById('current-contact-number');
+      const currentAddress = document.getElementById('current-address');
+      const currentName = document.getElementById('current-name');
+      const currentGender = document.getElementById('current-gender');
+      const currentEmail = document.getElementById('current-email');
+      const currentNationality = document.getElementById('current-nationality');
+      const currentDateOfBirth = document.getElementById('current-date-of-birth');
+      const currentRace = document.getElementById('current-race');
+      const currentOccupation = document.getElementById('current-occupation');
+
+      // Retrieve the details from local storage or set default values if not available
+      const defaultHouseNumber = "6781 2345";
+      const defaultContactNumber = "8123 4567";
+      const defaultAddress = "Blk 367, Yishun Ave 4";
+      const defaultName = "Lucas Lim";
+      const defaultGender = "Male";
+      const defaultEmail = "lucaslim@gmail.com";
+      const defaultNationality = "Singaporean";
+      const defaultDateOfBirth = "2000-07-29";
+      const defaultRace = "Chinese";
+      const defaultOccupation = "Student";
+
+      const updatedHouseNumber = localStorage.getItem('updatedHouseNumber') || defaultHouseNumber;
+      const updatedContactNumber = localStorage.getItem('updatedContactNumber') || defaultContactNumber;
+      const updatedAddress = localStorage.getItem('updatedAddress') || defaultAddress;
+      const updatedName = localStorage.getItem('updatedName') || defaultName;
+      const updatedGender = localStorage.getItem('updatedGender') || defaultGender;
+      const updatedEmail = localStorage.getItem('updatedEmail') || defaultEmail;
+      const updatedNationality = localStorage.getItem('updatedNationality') || defaultNationality;
+      const updatedDateOfBirth = localStorage.getItem('updatedDateOfBirth') || defaultDateOfBirth;
+      const updatedRace = localStorage.getItem('updatedRace') || defaultRace;
+      const updatedOccupation = localStorage.getItem('updatedOccupation') || defaultOccupation;
+
+      // Display the current details on the profile.html page
+      currentHouseNumber.textContent = updatedHouseNumber;
+      currentContactNumber.textContent = updatedContactNumber;
+      currentAddress.textContent = updatedAddress;
+      currentName.textContent = updatedName;
+      currentGender.textContent = updatedGender;
+      currentEmail.textContent = updatedEmail;
+      currentNationality.textContent = updatedNationality;
+      currentDateOfBirth.textContent = updatedDateOfBirth;
+      currentRace.textContent = updatedRace;
+      currentOccupation.textContent = updatedOccupation;
+    }
+      // Function to display the edit form and hide the current details
+      function showEditForm() {
+        currentDetails.style.display = 'none';
+        editDetails.style.display = 'block';
+      }
+  
+      // Function to display the current details and hide the edit form
+      function showCurrentDetails() {
+        currentDetails.style.display = 'block';
+        editDetails.style.display = 'none';
+      }
+  
+      // Function to save the updated details to local storage
+      function saveUpdatedDetails() {
+        const houseNumberInput = document.getElementById('house-number');
+        const contactNumberInput = document.getElementById('contact-number');
+        const addressInput = document.getElementById('address');
+        const nameInput = document.getElementById('name');
+        const genderInput = document.getElementById('gender');
+        const emailInput = document.getElementById('email');
+        const nationalityInput = document.getElementById('nationality');
+        const dateOfBirthInput = document.getElementById('date-of-birth');
+        const raceInput = document.getElementById('race');
+        const occupationInput = document.getElementById('occupation');
+  
+        // Get the new values from the form inputs
+        const updatedHouseNumber = houseNumberInput.value;
+        const updatedContactNumber = contactNumberInput.value;
+        const updatedAddress = addressInput.value;
+        const updatedName = nameInput.value;
+        const updatedGender = genderInput.options[genderInput.selectedIndex].text;
+        const updatedEmail = emailInput.value;
+        const updatedNationality = nationalityInput.value;
+        const updatedDateOfBirth = dateOfBirthInput.value;
+        const updatedRace = raceInput.value;
+        const updatedOccupation = occupationInput.value;
+  
+        // Save the updated details to local storage
+        localStorage.setItem('updatedHouseNumber', updatedHouseNumber);
+        localStorage.setItem('updatedContactNumber', updatedContactNumber);
+        localStorage.setItem('updatedAddress', updatedAddress);
+        localStorage.setItem('updatedName', updatedName);
+        localStorage.setItem('updatedGender', updatedGender);
+        localStorage.setItem('updatedEmail', updatedEmail);
+        localStorage.setItem('updatedNationality', updatedNationality);
+        localStorage.setItem('updatedDateOfBirth', updatedDateOfBirth);
+        localStorage.setItem('updatedRace', updatedRace);
+        localStorage.setItem('updatedOccupation', updatedOccupation);
+  
+        // Show the current details section and hide the edit details section
+        showCurrentDetails();
+  
+        // Redirect the user back to the homepage after saving changes
+        window.location.href = "homepage.html";
+      }
+  
+      // Function to handle the cancel button click event
+      function handleCancelButtonClick() {
+        showCurrentDetails();
+        // Reset form fields to their current values
+        const currentHouseNumber = localStorage.getItem('updatedHouseNumber') || "6781 2345";
+        const currentContactNumber = localStorage.getItem('updatedContactNumber') || "8123 4567";
+        const currentAddress = localStorage.getItem('updatedAddress') || "Blk 367, Yishun Ave 4";
+        const currentName = localStorage.getItem('updatedName') || "Lucas Lim";
+        const currentGender = localStorage.getItem('updatedGender') || "Male";
+        const currentEmail = localStorage.getItem('updatedEmail') || "lucaslim@gmail.com";
+        const currentNationality = localStorage.getItem('updatedNationality') || "Singaporean";
+        const currentDateOfBirth = localStorage.getItem('updatedDateOfBirth') || "2000-07-29";
+        const currentRace = localStorage.getItem('updatedRace') || "Chinese";
+        const currentOccupation = localStorage.getItem('updatedOccupation') || "Student";
+  
+        document.getElementById('house-number').value = currentHouseNumber;
+        document.getElementById('contact-number').value = currentContactNumber;
+        document.getElementById('address').value = currentAddress;
+        document.getElementById('name').value = currentName;
+        document.getElementById('gender').value = currentGender.toLowerCase();
+        document.getElementById('email').value = currentEmail;
+        document.getElementById('nationality').value = currentNationality;
+        document.getElementById('date-of-birth').value = currentDateOfBirth;
+        document.getElementById('race').value = currentRace;
+        document.getElementById('occupation').value = currentOccupation;
+      }
+  
+      // Change Details button click event
+      document.getElementById('change-btn').addEventListener('click', function() {
+        showEditForm();
+      });
+  
+      // Cancel button click event
+      document.getElementById('cancel-btn').addEventListener('click', function() {
+        handleCancelButtonClick();
+      });
+  
+      // Save Changes button click event
+      document.getElementById('save-btn').addEventListener('click', function() {
+        saveUpdatedDetails();
+      });
+  
+      // Call the function to display the current details when the profile.html page loads
+      displayCurrentDetails();
+    });
+  </script>  
+</body>
+</html>

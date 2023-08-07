@@ -1,0 +1,149 @@
+<!--I declare that this code was written by me. 
+I will not copy or allow others to copy my code. 
+I understand that copying code is considered as plagiarism.
+
+Student Name: Lucas Lim
+Student ID: 22026220
+Class: E63C
+Date/Time Last modified: 31/7/2023
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Login</title>
+
+  <style>
+    /* Add custom styles for login page */
+
+    body {
+      background-color: #f1f1f1;
+      font-family: Arial, sans-serif;
+      line-height: 1.5;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-image: url("sg.jpeg");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center center;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: 100px auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 4px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-family: 'SingaporeAirlines', Arial, sans-serif;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+    }
+
+    .form-error {
+      color: red;
+      margin-top: 5px;
+    }
+
+    .form-button {
+      width: 100%;
+      padding: 10px;
+      background-color: #0ea720;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .form-button:hover {
+      background-color: #0c940c;
+    }
+  </style>
+
+  <link href="https://fonts.googleapis.com/css?family=Singapore" rel="stylesheet">
+</head>
+
+<body>
+  <div class="container">
+    <h1>Login</h1>
+    <form id="login-form">
+      <div class="form-group">
+        <label for="user_id" class="form-label">User ID:</label>
+        <input type="text" id="user_id" class="form-input" required>
+        <span id="errorUserId" class="form-error"></span>
+      </div>
+      <div class="form-group">
+        <label for="pin_number" class="form-label">PIN:</label>
+        <input type="password" id="pin_number" class="form-input" required>
+        <span id="errorPinNumber" class="form-error"></span>
+      </div>
+      <div class="form-group">
+        <button type="button" id="submit-button" class="form-button">Login</button>
+      </div>
+      <div class="form-group">
+        Don't have an account? Click <a href="create_acc.html">here</a> to create an account
+      </div>
+    </form>
+  </div>
+
+  <!-- Rest of the JavaScript code -->
+  <script>
+    const loginForm = document.getElementById('login-form');
+    const submitButton = document.getElementById('submit-button');
+
+    submitButton.addEventListener('click', () => {
+      const errorUserId = document.getElementById('errorUserId');
+      const errorPinNumber = document.getElementById('errorPinNumber');
+
+      errorUserId.textContent = '';
+      errorPinNumber.textContent = '';
+
+      const userId = document.getElementById('user_id').value;
+      const pinNumber = document.getElementById('pin_number').value;
+
+      // Check user ID
+      const userIdRegex = /^[0-9a-zA-Z!@#$%^&*()_+={}[\]|\\:;"'<>,.?/~`-]{12,}$/;
+      if (!userIdRegex.test(userId)) {
+        errorUserId.textContent = "Invalid User ID. Please enter again.";
+        return;
+      }
+
+      // Check PIN number
+      const pinNumberRegex = /^\d{6}$/;
+      if (!pinNumberRegex.test(pinNumber)) {
+        errorPinNumber.textContent = "Invalid PIN number. Please enter again.";
+        return;
+      }
+
+      // If all validations pass, redirect the user to homepage.html
+      window.location.href = "homepage.html";
+    });
+  </script>
+</body>
+</html>
