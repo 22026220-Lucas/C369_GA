@@ -15,7 +15,6 @@ Date/Time Last modified: 31/7/2023
   <link rel="stylesheet" href="styles.css">
   <title>CapiBank - Confirmation</title>
   <style>
-    /* Add custom styles for confirmation page */
     header {
       background-color: #062773;
       padding: 10px;
@@ -41,7 +40,6 @@ Date/Time Last modified: 31/7/2023
       text-decoration: none;
     }
 
-    /* Add CSS styles for the logo */
     .logo {
       font-family: 'Singapore', Arial, sans-serif;
       font-size: 20px;
@@ -112,7 +110,6 @@ Date/Time Last modified: 31/7/2023
 <body>
   <header>
     <nav>
-      <!-- Add your logo and navigation bar here -->
       <h1 class="logo">CapiBank</h1>
       <ul>
         <li><a href="index.html">Home</a></li>
@@ -127,7 +124,6 @@ Date/Time Last modified: 31/7/2023
   <main>
     <section class="confirmation-section">
       <h1>Overseas Transfer Confirmation</h1>
-      <!-- Display the overseas transfer details, including country selection, amount in SGD, converted amount, and recipient's name -->
       <div id="transfer-details">
         <h2>Transfer Details</h2>
         <p>Recipient's Name: <span id="recipient-name">-</span></p>
@@ -142,25 +138,19 @@ Date/Time Last modified: 31/7/2023
 
   <footer>
     <p>&copy; 2023 CapiBank. All rights reserved.</p>
-    <!-- Add footer content here -->
   </footer>
 
   <script>
-    // JavaScript code for confirmation page
-
-    // Retrieve the transfer details from the sessionStorage
     const recipientName = sessionStorage.getItem('recipientName');
     const countryInput = sessionStorage.getItem('countryInput');
     const amountSGD = sessionStorage.getItem('amountSGD');
     const convertedAmount = sessionStorage.getItem('convertedAmount');
 
-    // Display the information details based on what the user entered
     document.getElementById('recipient-name').textContent = recipientName;
     document.getElementById('country-input').textContent = countryInput;
     document.getElementById('amount-sgd').textContent = amountSGD;
     document.getElementById('converted-amount').textContent = convertedAmount;
 
-    // Redirect to summary_overseas.html after pressing the "Next" button
     function redirectToSummary() {
       window.location.href = `summary_overseas.html?recipientName=${encodeURIComponent(recipientName)}&countryInput=${encodeURIComponent(countryInput)}&amountSGD=${encodeURIComponent(amountSGD)}&convertedAmount=${encodeURIComponent(convertedAmount)}`;
     }
