@@ -1,3 +1,4 @@
+
 <!--I declare that this code was written by me. 
 I will not copy or allow others to copy my code. 
 I understand that copying code is considered as plagiarism.
@@ -147,13 +148,9 @@ Date/Time Last modified: 31/7/2023
     const convertedAmount = sessionStorage.getItem('convertedAmount');
 
     document.getElementById('recipient-name').textContent = recipientName;
-    
-    // Set Recipient's Country based on selected country in the previous step
-    const countrySpan = document.getElementById('country-input');
-    countrySpan.textContent = `Recipient's Country: ${countryInput}`;
-    
-    document.getElementById('amount-sgd').textContent = `Amount to Transfer (SGD): ${amountSGD}`;
-    document.getElementById('converted-amount').textContent = `Converted Amount: ${convertedAmount}`;
+    document.getElementById('country-input').textContent = countryInput;
+    document.getElementById('amount-sgd').textContent = amountSGD;
+    document.getElementById('converted-amount').textContent = convertedAmount;
 
     function redirectToSummary() {
       window.location.href = `summary_overseas.html?recipientName=${encodeURIComponent(recipientName)}&countryInput=${encodeURIComponent(countryInput)}&amountSGD=${encodeURIComponent(amountSGD)}&convertedAmount=${encodeURIComponent(convertedAmount)}`;
