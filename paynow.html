@@ -210,7 +210,7 @@ Date/Time Last modified: 31/7/2023
       const errorMessageElement = document.getElementById("errorMessage");
       const amountErrorMessageElement = document.getElementById("amountErrorMessage");
 
-      if (recipientPhone.length >= 8) {
+      if (recipientPhone.length == 8) {
         const firstDigit = recipientPhone.charAt(0);
         if (firstDigit !== '8' && firstDigit !== '9') {
           errorMessageElement.textContent = "Phone number must start with 8 or 9.";
